@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf8rl0c8yy31o"]
+
+[ext_resource type="Texture2D" uid="uid://c2g24fa0tauir" path="res://Assets/Images/EdgeDoorClosed.png" id="1_siode"]
+[ext_resource type="Script" path="res://Game Scenes/door.gd" id="1_sjux2"]
+
+[sub_resource type="Theme" id="Theme_dx80g"]
+
+[sub_resource type="SystemFont" id="SystemFont_2frai"]
+font_names = PackedStringArray("Bodoni MT")
+subpixel_positioning = 0
+
+[node name="Door" type="Button"]
+self_modulate = Color(0, 0, 0, 0)
+offset_right = 188.0
+offset_bottom = 406.0
+theme = SubResource("Theme_dx80g")
+text = "efef"
+script = ExtResource("1_sjux2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_siode")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 188.0
+offset_bottom = 200.0
+
+[node name="Cost" type="Label" parent="CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_2frai")
+theme_override_font_sizes/font_size = 100
+text = "9"
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
