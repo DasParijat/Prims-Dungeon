@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkbm417ua0v0u"
-path="res://.godot/imported/DungeonRoomStart.png-784144c1e96f8a730c42cb969a0006ac.ctex"
+uid="uid://bxr5f1evya50u"
+path="res://.godot/imported/DungeonRoomBackground.png-a89295b07174481ccbcbe07a5702c1d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/DungeonRoomStart.png"
-dest_files=["res://.godot/imported/DungeonRoomStart.png-784144c1e96f8a730c42cb969a0006ac.ctex"]
+source_file="res://Assets/Images/Room/DungeonRoomBackground.png"
+dest_files=["res://.godot/imported/DungeonRoomBackground.png-a89295b07174481ccbcbe07a5702c1d7.ctex"]
 
 [params]
 

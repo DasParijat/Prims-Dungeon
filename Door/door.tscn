@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bf8rl0c8yy31o"]
 
-[ext_resource type="Texture2D" uid="uid://c2g24fa0tauir" path="res://Assets/Images/EdgeDoorClosed.png" id="1_siode"]
-[ext_resource type="Script" path="res://Game Scenes/door.gd" id="1_sjux2"]
+[ext_resource type="Texture2D" uid="uid://c2g24fa0tauir" path="res://Assets/Images/Door/EdgeDoorClosed.png" id="1_siode"]
+[ext_resource type="Script" path="res://Door/door_object.gd" id="1_sjux2"]
 
 [sub_resource type="Theme" id="Theme_dx80g"]
 

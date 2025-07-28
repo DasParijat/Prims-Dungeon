@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://57t1euthr6ct"
-path="res://.godot/imported/DungeonRoomWin.png-4003829f15f8ebcfddd3dfc46142fc39.ctex"
+uid="uid://7gfggwe3vnl2"
+path="res://.godot/imported/EdgeDoorOpen.png-204322bebc70eedb644d32d327eb09b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/DungeonRoomWin.png"
-dest_files=["res://.godot/imported/DungeonRoomWin.png-4003829f15f8ebcfddd3dfc46142fc39.ctex"]
+source_file="res://Assets/Images/Door/EdgeDoorOpen.png"
+dest_files=["res://.godot/imported/EdgeDoorOpen.png-204322bebc70eedb644d32d327eb09b3.ctex"]
 
 [params]
 

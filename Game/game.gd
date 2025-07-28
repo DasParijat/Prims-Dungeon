@@ -123,7 +123,7 @@ func load_room(room : Room) -> void:
 	#print(room.letter_id)
 	for door in doors_array:
 		if door.check_rooms(room):
-			var door_scene = preload("res://Game Scenes/door.tscn").instantiate()
+			var door_scene = preload("uid://bf8rl0c8yy31o").instantiate()
 			door_scene.door = door
 			door_scene.cur_room = cur_room
 			door_container.add_child(door_scene)
