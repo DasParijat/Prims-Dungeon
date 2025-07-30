@@ -10,16 +10,14 @@ extends Control
 func _ready() -> void:
 	GRH.connect("door_entered", Callable(self, "_on_door_entered"))
 	
+	var connected_room : Room = door.room1 if door.room2 == cur_room else door.room2
+	
 	if door.is_locked:
-		texture.texture = preload("uid://c2g24fa0tauir")
+		texture.texture = preload("uid://c2g24fa0tauir") if !connected_room.orb_found else preload("uid://cd2ym241n674i")
 		cost.text = str(door.cost)
 	else:
-		if door.room2 == cur_room:
-			cost.text = door.room1.letter_id
-		else:
-			cost.text = door.room2.letter_id
-		
 		texture.texture = preload("uid://7gfggwe3vnl2")
+		cost.text = connected_room.letter_id
 
 func _on_pressed() -> void:
 	if door.is_locked:
