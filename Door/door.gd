@@ -24,7 +24,7 @@ func check_rooms(search : Room) -> bool:
 		return true
 	return false
 
-func unlock(points : int) -> bool:
+func can_unlock(points : int) -> bool:
 	## Handles unlocking door
 	## Does NOT handle taking away from player cost, 
 	## instead whether unlocking was successful or not to Game
