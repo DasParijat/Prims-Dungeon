@@ -14,11 +14,12 @@ func _ready() -> void:
 		texture.texture = preload("uid://c2g24fa0tauir")
 		cost.text = str(door.cost)
 	else:
-		texture.texture = preload("uid://7gfggwe3vnl2")
 		if door.room2 == cur_room:
 			cost.text = door.room1.letter_id
 		else:
 			cost.text = door.room2.letter_id
+		
+		texture.texture = preload("uid://7gfggwe3vnl2")
 
 func _on_pressed() -> void:
 	if door.is_locked:
