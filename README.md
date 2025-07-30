@@ -20,7 +20,7 @@ This was a Godot 4.3 game that was made for the Marist Game Developer Club's Hac
 	player's are forced to follow Prim's Algo in order to win.
 	
 ## Current Plans :
-- Fix Prim's MST
+- Fix Prim's MST (DONE)
 	- Possibly write tests for prim_mst class
 - Possibly add a menu to play a new game
 - Change orb texture
@@ -57,11 +57,11 @@ then give game over screen.
 	- Randomly choose which room is the starting room
 			
 ### Room/Node: 
-		-{letter = A, orb_found : bool = false, mod_color = Color()}
-		-Each room has a letter id (A, B, C)
-		-Each room has an orb (Once player visits room, orb is taken)
-			-Orb also serves as reminder if player has visited room or not
-		-OPTIONAL Each room has a unique modulate color value (to make it easier to see the difference)
+- {letter = A, orb_found : bool = false, mod_color = Color()}
+- Each room has a letter id (A, B, C)
+- Each room has an orb (Once player visits room, orb is taken)
+	- Orb also serves as reminder if player has visited room or not
+- OPTIONAL Each room has a unique modulate color value (to make it easier to see the difference)
 	
 ### Room Transition:
 - A single base room is used for all rooms
