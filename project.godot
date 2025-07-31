@@ -30,6 +30,7 @@ window/stretch/mode="viewport"
 folder_colors={
 "res://Assets/": "purple",
 "res://Door/": "orange",
+"res://Dungeon/": "pink",
 "res://Game/": "yellow",
 "res://Global Scripts/": "teal",
 "res://Room/": "green"

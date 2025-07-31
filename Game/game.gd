@@ -6,6 +6,8 @@ extends Node2D
 @onready var points_label : Label = $PointsLabel
 @onready var orb : TextureButton = $Room/Orb
 
+var cur_dungeon : Dungeon
+
 var cur_room : Room
 var points : int
 
@@ -23,10 +25,13 @@ func _ready() -> void:
 	GRH.connect("door_entered", Callable(self, "_on_door_entered"))
 	randomize()
 	
-	generate_rooms(randi_range(5, 15))
-	generate_doors()
+	cur_dungeon = Dungeon.new(randi_range(5, 15))
 	
-	rooms_array[0].orb_found = true
+	rooms_array = cur_dungeon.rooms_array
+	doors_array = cur_dungeon.doors_array
+	
+	
+	#rooms_array[0].orb_found = true
 	background.texture = preload("uid://dkbm417ua0v0u")
 	start_game(rooms_array[0])
 	
@@ -99,7 +104,7 @@ func start_game(start_room : Room) -> void:
 			room.orb_found = false
 	
 	GRH.orbs_found = 0
-	GRH.points = PrimMST.new().calculate_mst(rooms_array, doors_array)
+	GRH.points = cur_dungeon.points_needed_to_win #PrimMST.new().calculate_mst(rooms_array, doors_array)
 	if GRH.points <= 0:
 		printerr("Game / PrimMST: GIVEN <= 0 POINTS FROM MST CLASS. FREE POINTS AWARDED")
 		GRH.points = randi_range(3, 5) * doors_array.size()

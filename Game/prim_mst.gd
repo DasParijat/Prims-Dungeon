@@ -1,7 +1,7 @@
 extends Node
 class_name PrimMST
 
-func calculate_mst(rooms_array: Array[Room], doors_array: Array[Door]) -> int:
+func calculate_mst(rooms_array : Array[Room], doors_array : Array[Door]) -> int:
 	## Calculates the total weight of the MST using Prim's Algorithm
 	var total_weight = 0
 	var visited_rooms = {}
@@ -44,6 +44,6 @@ func calculate_mst(rooms_array: Array[Room], doors_array: Array[Door]) -> int:
 	return total_weight
 
 
-func _compare_door_cost(a: Door, b: Door) -> bool:
+func _compare_door_cost(a : Door, b : Door) -> bool:
 	## Helper function to compare door costs
-	return (a.cost - b.cost) < 0
+	return a.cost < b.cost
