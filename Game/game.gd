@@ -6,6 +6,10 @@ extends Node2D
 @onready var points_label : Label = $PointsLabel
 @onready var orb : TextureButton = $Room/Orb
 
+@export_category("Number of Rooms")
+@export var MIN_ROOMS : int
+@export var MAX_ROOMS : int 
+
 var cur_dungeon : Dungeon
 
 var cur_room : Room
@@ -31,24 +35,29 @@ func _ready() -> void:
 
 func create_dungeon() -> void:
 	randomize()
-	cur_dungeon = Dungeon.new(randi_range(5, 15))
+	cur_dungeon = Dungeon.new(randi_range(MIN_ROOMS, MAX_ROOMS))
 	rooms_array = cur_dungeon.rooms_array
 	doors_array = cur_dungeon.doors_array
 
 func start_game(start_room : Room) -> void:
 	for door in doors_array:
+		# Lock all doors
 		door.is_locked = true
 	for room in rooms_array:
+		# Give orbs to all rooms
 		if room.letter_id != "START":
 			room.orb_found = false
 	
+	# Set global values
 	GRH.orbs_found = 0
-	GRH.points = cur_dungeon.points_needed_to_win #PrimMST.new().calculate_mst(rooms_array, doors_array)
+	GRH.points = cur_dungeon.points_needed_to_win 
 	if GRH.points <= 0:
 		printerr("Game / PrimMST: GIVEN <= 0 POINTS FROM MST CLASS. FREE POINTS AWARDED")
 		GRH.points = randi_range(3, 5) * doors_array.size()
 	
+	# Set up current room
 	cur_room = start_room
+	if cur_room.letter_id != "START": background.texture = preload("uid://bxr5f1evya50u")
 	load_room(cur_room)
 	
 func _process(delta : float) -> void:
