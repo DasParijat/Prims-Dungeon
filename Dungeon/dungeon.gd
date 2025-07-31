@@ -12,8 +12,6 @@ var alphabet : Array[String] = [
 ]
 
 func _init(num_of_rooms : int) -> void:
-	randomize()
-	
 	generate_rooms(num_of_rooms)
 	generate_doors()
 	
