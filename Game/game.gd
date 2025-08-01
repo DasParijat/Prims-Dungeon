@@ -35,7 +35,7 @@ func _ready() -> void:
 
 func create_dungeon() -> void:
 	randomize()
-	cur_dungeon = Dungeon.new(randi_range(MIN_ROOMS, MAX_ROOMS))
+	cur_dungeon = Dungeon.new(GRH.num_of_rooms)
 	rooms_array = cur_dungeon.rooms_array
 	doors_array = cur_dungeon.doors_array
 

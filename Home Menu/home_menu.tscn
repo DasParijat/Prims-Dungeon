@@ -59,10 +59,10 @@ theme_override_constants/margin_right = 100
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="RoomSlider" parent="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("RANGE") instance=ExtResource("3_cllnv")]
+[node name="RoomSlider" parent="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("SLIDER") instance=ExtResource("3_cllnv")]
 layout_mode = 2
 NAME = "Number of Rooms - "
-RANGE = NodePath("HSlider")
+SLIDER = NodePath("HSlider")
 
 [node name="HSlider" type="HSlider" parent="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer/RoomSlider"]
 layout_mode = 2
@@ -73,3 +73,5 @@ value = 10.0
 [node name="PlayButton" type="Button" parent="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "play"
+
+[connection signal="value_changed" from="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer/RoomSlider/HSlider" to="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer/RoomSlider" method="_on_h_slider_value_changed"]
