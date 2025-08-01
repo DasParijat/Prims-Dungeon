@@ -22,7 +22,7 @@ This was a Godot 4.3 game that was made for the Marist Game Developer Club's Hac
 ## Current Plans :
 - Fix Prim's MST (DONE)
 	- Possibly write tests for prim_mst class
-- Possibly add a menu to play a new game
+- Possibly add a menu to play a new game (IN WORK)
 - Change orb texture
 - Add more visual/audio effects
 - Have text in-game be more descriptive and be their own nodes, rather then coming with the textures as they are now
