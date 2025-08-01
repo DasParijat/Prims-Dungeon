@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhmlycafuc6t8"]
+
+[ext_resource type="Script" path="res://Home Menu/home_menu.gd" id="1_mwd20"]
+[ext_resource type="Texture2D" uid="uid://bxr5f1evya50u" path="res://Assets/Images/Room/DungeonRoomBackground.png" id="1_pfbx8"]
+
+[sub_resource type="SystemFont" id="SystemFont_4h1jj"]
+font_names = PackedStringArray("Cascadia Mono")
+
+[sub_resource type="LabelSettings" id="LabelSettings_alb2t"]
+font = SubResource("SystemFont_4h1jj")
+font_size = 100
+
+[node name="HomeMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mwd20")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_pfbx8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer"]
+layout_mode = 2
+split_offset = 100
+dragger_visibility = 1
+
+[node name="Logo" type="Label" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+text = "PRIM'S DUNGEON"
+label_settings = SubResource("LabelSettings_alb2t")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VSplitContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Button" type="Button" parent="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "play"
+
+[node name="Button2" type="Button" parent="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "wcweec"
+
+[node name="Button3" type="Button" parent="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "wcw"

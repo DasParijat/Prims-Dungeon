@@ -33,6 +33,7 @@ folder_colors={
 "res://Dungeon/": "pink",
 "res://Game/": "yellow",
 "res://Global Scripts/": "teal",
+"res://Home Menu/": "yellow",
 "res://Room/": "green"
 }
 
