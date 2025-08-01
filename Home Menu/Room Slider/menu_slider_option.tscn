@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://texi0kd634p6"]
+
+[ext_resource type="Script" path="res://Home Menu/Room Slider/menu_slider_option.gd" id="1_k3ed5"]
+
+[node name="menu_slider_option" type="VBoxContainer"]
+script = ExtResource("1_k3ed5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Slider Name" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Room Number - "
+horizontal_alignment = 1
+
+[node name="Slider Value" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1

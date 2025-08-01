@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhmlycafuc6t8"]
+[gd_scene load_steps=6 format=3 uid="uid://bhmlycafuc6t8"]
 
 [ext_resource type="Script" path="res://Home Menu/home_menu.gd" id="1_mwd20"]
 [ext_resource type="Texture2D" uid="uid://bxr5f1evya50u" path="res://Assets/Images/Room/DungeonRoomBackground.png" id="1_pfbx8"]
+[ext_resource type="PackedScene" uid="uid://texi0kd634p6" path="res://Home Menu/Room Slider/menu_slider_option.tscn" id="3_cllnv"]
 
 [sub_resource type="SystemFont" id="SystemFont_4h1jj"]
 font_names = PackedStringArray("Cascadia Mono")
@@ -58,14 +59,17 @@ theme_override_constants/margin_right = 100
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="Button" type="Button" parent="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer"]
+[node name="RoomSlider" parent="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("RANGE") instance=ExtResource("3_cllnv")]
+layout_mode = 2
+NAME = "Number of Rooms - "
+RANGE = NodePath("HSlider")
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer/RoomSlider"]
+layout_mode = 2
+min_value = 5.0
+max_value = 25.0
+value = 10.0
+
+[node name="PlayButton" type="Button" parent="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "play"
-
-[node name="Button2" type="Button" parent="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "wcweec"
-
-[node name="Button3" type="Button" parent="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "wcw"
