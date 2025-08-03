@@ -54,6 +54,7 @@ offset_top = -65.0
 offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_bottom = 130
 
 [node name="DoorContainer" type="HBoxContainer" parent="Room/MarginContainer"]
