@@ -1,8 +1,9 @@
 extends Control
+class_name DoorScene
 
 @onready var button : Button = $"."
 @onready var texture : TextureRect = $TextureRect
-@onready var cost : Label = $CenterContainer/Cost
+@onready var cost : Label = $Cost
 
 @onready var door : Door
 @onready var cur_room : Room

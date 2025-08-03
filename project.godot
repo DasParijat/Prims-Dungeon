@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Prim's Dungeon"
+config/name="GameJamSpring2025"
 run/main_scene="res://Home Menu/home_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://Assets/Images/Room/DungeonRoomBackground.png"
+config/icon="res://icon.svg"
+config/main_scene="res://Game/game.tscn"
 
 [autoload]
 

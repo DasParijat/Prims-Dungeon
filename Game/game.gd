@@ -1,7 +1,7 @@
-extends Node2D
+extends Node
 
 @onready var color_modulate : CanvasModulate = $Room/Background/ColorModulate
-@onready var door_container : HBoxContainer = $Room/DoorContainer
+@onready var door_container : HBoxContainer = $Room/MarginContainer/DoorContainer
 @onready var background: TextureRect = $Room/Background
 @onready var points_label : Label = $PointsLabel
 @onready var orb : TextureButton = $Room/Orb
