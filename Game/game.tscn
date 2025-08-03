@@ -13,11 +13,10 @@ font = SubResource("SystemFont_ho0eh")
 font_size = 30
 
 [node name="Game" type="Node2D"]
+position = Vector2(480, 360)
 script = ExtResource("1_v2p7b")
 MIN_ROOMS = 5
 MAX_ROOMS = 5
-
-[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Room" type="Control" parent="."]
 layout_mode = 3
