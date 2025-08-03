@@ -25,7 +25,7 @@ GScene="*res://Global Scripts/GlobalScene.gd"
 
 window/size/viewport_width=960
 window/size/viewport_height=720
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [file_customization]
 
