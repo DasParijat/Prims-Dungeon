@@ -24,6 +24,7 @@ func _ready() -> void:
 	GRH.connect("door_entered", Callable(self, "_on_door_entered"))
 	GRH.connect("game_reset", Callable(self, "_on_game_reset"))
 	GRH.connect("game_won", Callable(self, "_on_game_won"))
+	GRH.connect("game_leave", Callable(self, "_on_game_leave"))
 	
 	create_dungeon()
 
@@ -124,4 +125,6 @@ func _on_orb_pressed() -> void:
 		GRH.emit_signal("game_won")
 		
 	orb.hide()
-	
+
+func _on_game_leave() -> void:
+	GScene.change_scene(GScene.HOME_MENU)

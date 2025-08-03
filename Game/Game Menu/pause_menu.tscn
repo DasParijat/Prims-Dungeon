@@ -73,4 +73,6 @@ theme = SubResource("Theme_vawgx")
 toggle_mode = true
 texture_normal = ExtResource("1_elfc5")
 
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Reset Button" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]
 [connection signal="toggled" from="MenuOpenButton" to="." method="_on_menu_open_button_toggled"]
