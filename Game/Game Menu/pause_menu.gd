@@ -1,7 +1,6 @@
 extends Control
 
 @onready var menu : Control = $Menu
-@onready var menu_open_button : TextureButton = $MenuOpenButton
 
 func _ready() -> void:
 	menu.hide()

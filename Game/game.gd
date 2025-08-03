@@ -15,15 +15,10 @@ var cur_dungeon : Dungeon
 var cur_room : Room
 var points : int
 
-var rooms_array : Array[Room] = [Room.new("START", Color(0.5,0.5,0.5))] # starting room
+var rooms_array : Array[Room]
 var doors_array : Array[Door]
 
 var room_transition : bool = false
-
-var alphabet : Array[String] = [
-	"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
-	"N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
-]
 
 func _ready() -> void:
 	GRH.connect("door_entered", Callable(self, "_on_door_entered"))
@@ -64,7 +59,7 @@ func _process(delta : float) -> void:
 	# process solely for handling input
 	if Input.is_action_just_pressed("reset") and cur_room.letter_id != "START":
 		start_game(rooms_array[0])
-	
+
 func load_room(room : Room) -> void:
 	update_label_text()
 	color_modulate.color = room.mod_color

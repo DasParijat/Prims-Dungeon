@@ -83,7 +83,6 @@ text = "30 Points"
 label_settings = SubResource("LabelSettings_nm3xk")
 
 [node name="pause_menu" parent="." instance=ExtResource("2_ilt8h")]
-visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="Room/Orb" to="." method="_on_orb_pressed"]
