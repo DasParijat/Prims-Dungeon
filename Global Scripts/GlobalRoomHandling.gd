@@ -1,6 +1,8 @@
 extends Node
 
 signal door_entered(door : Door)
+signal game_won()
+signal game_reset()
 
 var num_of_rooms : int = 10
 var points : int = 0 

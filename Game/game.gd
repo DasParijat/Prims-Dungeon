@@ -22,7 +22,9 @@ var room_transition : bool = false
 
 func _ready() -> void:
 	GRH.connect("door_entered", Callable(self, "_on_door_entered"))
-
+	GRH.connect("game_reset", Callable(self, "_on_game_reset"))
+	GRH.connect("game_won", Callable(self, "_on_game_won"))
+	
 	create_dungeon()
 
 	background.texture = preload("uid://dkbm417ua0v0u")
@@ -54,12 +56,17 @@ func start_game(start_room : Room) -> void:
 	cur_room = start_room
 	if cur_room.letter_id != "START": background.texture = preload("uid://bxr5f1evya50u")
 	load_room(cur_room)
-	
-func _process(delta : float) -> void:
-	# process solely for handling input
-	if Input.is_action_just_pressed("reset") and cur_room.letter_id != "START":
-		start_game(rooms_array[0])
 
+func _input(event : InputEvent) -> void:
+	if event.is_action_pressed("reset"):
+		GRH.emit_signal("game_reset")
+
+func _on_game_reset() -> void:
+	if cur_room.letter_id != "START":
+		start_game(rooms_array[0])
+	else:
+		printerr("Game: IN START ROOM, CAN'T RESET")
+	
 func load_room(room : Room) -> void:
 	update_label_text()
 	color_modulate.color = room.mod_color
@@ -103,15 +110,18 @@ func update_label_text() -> void:
 	points_label.text = (str(GRH.points) + " points \n" 
 						+ (str(GRH.orbs_found) + " / " + str(rooms_array.size())) 
 						+ " orbs \nRoom " + cur_room.letter_id)
-						
+
+func _on_game_won() -> void:
+	cur_room = Room.new("WIN", Color(0.8, 0.8, 0.8))
+	background.texture = preload("uid://57t1euthr6ct")
+	load_room(cur_room)
+
 func _on_orb_pressed() -> void:
 	cur_room.orb_found = true
 	GRH.orbs_found += 1
 	update_label_text()
 	if GRH.orbs_found == rooms_array.size():
-		cur_room = Room.new("WIN", Color(0.8, 0.8, 0.8))
-		background.texture = preload("uid://57t1euthr6ct")
-		load_room(cur_room)
+		GRH.emit_signal("game_won")
 		
 	orb.hide()
 	

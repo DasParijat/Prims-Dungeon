@@ -16,7 +16,9 @@ func _init(_room1 : Room, _room2 : Room) -> void:
 	is_locked = true
 
 func print_door() -> void:
-	print("{",room1.letter_id, ", ", room2.letter_id,"}")
+	var condition : bool = room1.letter_id == "A" or room2.letter_id == "A"
+	
+	if condition: print("{",room1.letter_id, ", ", room2.letter_id,"}")
 	
 func check_rooms(search : Room) -> bool:
 	## Checks if room exist within edge
