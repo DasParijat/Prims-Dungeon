@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpy0flbvigrsd"]
+[gd_scene load_steps=4 format=3 uid="uid://cpy0flbvigrsd"]
+
+[ext_resource type="Script" path="res://Game/Game Menu/pause_menu.gd" id="1_0kagn"]
+[ext_resource type="Texture2D" uid="uid://dlntltuftcbpl" path="res://icon.svg" id="1_elfc5"]
 
 [sub_resource type="Theme" id="Theme_vawgx"]
 
@@ -9,17 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="MenuBar" type="MenuButton" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -93.0
-offset_bottom = 40.0
-grow_horizontal = 0
-theme = SubResource("Theme_vawgx")
-text = "weffwefwe"
+script = ExtResource("1_0kagn")
 
 [node name="Menu" type="Control" parent="."]
 visible = false
@@ -56,3 +49,17 @@ layout_mode = 2
 [node name="Button" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "ddd"
+
+[node name="MenuOpenButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -93.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme = SubResource("Theme_vawgx")
+toggle_mode = true
+texture_normal = ExtResource("1_elfc5")
+
+[connection signal="toggled" from="MenuOpenButton" to="." method="_on_menu_open_button_toggled"]

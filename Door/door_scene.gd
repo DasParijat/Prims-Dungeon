@@ -12,7 +12,6 @@ extends Control
 @onready var door_opened_img = preload("uid://7gfggwe3vnl2")
 
 func _ready() -> void:
-	GRH.connect("door_entered", Callable(self, "_on_door_entered"))
 	set_door_graphic()
 
 func set_door_graphic() -> void:
