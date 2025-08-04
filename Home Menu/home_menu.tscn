@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhmlycafuc6t8"]
+[gd_scene load_steps=7 format=3 uid="uid://bhmlycafuc6t8"]
 
 [ext_resource type="Script" path="res://Home Menu/home_menu.gd" id="1_mwd20"]
 [ext_resource type="Texture2D" uid="uid://bxr5f1evya50u" path="res://Assets/Images/Room/DungeonRoomBackground.png" id="1_pfbx8"]
 [ext_resource type="PackedScene" uid="uid://texi0kd634p6" path="res://Home Menu/Room Slider/menu_slider_option.tscn" id="3_cllnv"]
+[ext_resource type="Texture2D" uid="uid://c14tpvlifmmx8" path="res://Assets/Images/Menu Icons/play_icon.png" id="4_8pi1f"]
 
 [sub_resource type="SystemFont" id="SystemFont_4h1jj"]
 font_names = PackedStringArray("Cascadia Mono")
@@ -72,7 +73,8 @@ value = 10.0
 
 [node name="PlayButton" type="Button" parent="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "play"
+icon = ExtResource("4_8pi1f")
+icon_alignment = 1
 
 [connection signal="value_changed" from="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer/RoomSlider/HSlider" to="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer/RoomSlider" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

@@ -3,7 +3,7 @@ extends Control
 const MENU_SCENE : PackedScene = preload("uid://bhmlycafuc6t8")
 
 @onready var menu : Control = $Menu
-@onready var menu_open_button : TextureButton = $MenuOpenButton
+@onready var menu_open_button : Button = $MarginContainer/MenuOpenButton
 
 func _ready() -> void:
 	menu.hide()

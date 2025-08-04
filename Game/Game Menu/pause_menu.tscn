@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpy0flbvigrsd"]
+[gd_scene load_steps=6 format=3 uid="uid://cpy0flbvigrsd"]
 
 [ext_resource type="Script" path="res://Game/Game Menu/pause_menu.gd" id="1_0kagn"]
-[ext_resource type="Texture2D" uid="uid://dlntltuftcbpl" path="res://icon.svg" id="1_elfc5"]
+[ext_resource type="Texture2D" uid="uid://d1tllht6le8ot" path="res://Assets/Images/Menu Icons/reset_icon.png" id="2_331ra"]
+[ext_resource type="Texture2D" uid="uid://b1tgjk34ta3k4" path="res://Assets/Images/Menu Icons/leave_icon.png" id="3_bkp30"]
+[ext_resource type="Texture2D" uid="uid://ci0ivhny7g1ey" path="res://Assets/Images/Menu Icons/hamburger_icon.png" id="4_kdlrd"]
 
 [sub_resource type="Theme" id="Theme_vawgx"]
 
@@ -47,32 +49,45 @@ theme_override_constants/margin_right = 200
 [node name="Label" type="Label" parent="Menu/MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Menu/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="Reset Button" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+[node name="Reset Button" type="Button" parent="Menu/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Reset"
+icon = ExtResource("2_331ra")
+alignment = 0
+icon_alignment = 1
 
-[node name="Quit Button" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+[node name="Quit Button" type="Button" parent="Menu/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Quit
-"
+icon = ExtResource("3_bkp30")
+icon_alignment = 1
 
-[node name="MenuOpenButton" type="TextureButton" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -93.0
+offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
+theme_override_constants/margin_left = -50
+theme_override_constants/margin_bottom = -50
+
+[node name="MenuOpenButton" type="Button" parent="MarginContainer"]
+layout_mode = 2
 theme = SubResource("Theme_vawgx")
 toggle_mode = true
-texture_normal = ExtResource("1_elfc5")
+icon = ExtResource("4_kdlrd")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
 
-[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Reset Button" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]
-[connection signal="toggled" from="MenuOpenButton" to="." method="_on_menu_open_button_toggled"]
+[connection signal="pressed" from="Menu/MarginContainer/MarginContainer/VBoxContainer/Reset Button" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/MarginContainer/VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]
+[connection signal="toggled" from="MarginContainer/MenuOpenButton" to="." method="_on_menu_open_button_toggled"]
