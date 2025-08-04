@@ -2,8 +2,8 @@ extends Control
 
 const MENU_SCENE : PackedScene = preload("uid://bhmlycafuc6t8")
 
-@onready var menu : Control = $Menu
-@onready var menu_open_button : Button = $MarginContainer/MenuOpenButton
+@onready var menu : Control = $MarginContainer/VBoxContainer/Menu
+@onready var menu_open_button : Button = $MarginContainer/VBoxContainer/MarginContainer/MenuOpenButton
 
 func _ready() -> void:
 	menu.hide()

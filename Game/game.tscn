@@ -75,10 +75,13 @@ texture_normal = ExtResource("3_dfmax")
 [node name="LightOverlay" type="PointLight2D" parent="Room"]
 texture = ExtResource("2_37ubt")
 
-[node name="PointsLabel" type="Label" parent="."]
+[node name="UIContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 offset_right = 117.0
 offset_bottom = 37.0
+
+[node name="PointsLabel" type="Label" parent="UIContainer"]
+layout_mode = 2
 text = "30 Points"
 label_settings = SubResource("LabelSettings_nm3xk")
 
