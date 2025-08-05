@@ -5,12 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://bgulib037v3af" path="res://Assets/Images/Room/DungeonRoomLightOverlay.png" id="2_37ubt"]
 [ext_resource type="PackedScene" uid="uid://cpy0flbvigrsd" path="res://Game/Game Menu/pause_menu.tscn" id="2_ilt8h"]
 [ext_resource type="Texture2D" uid="uid://dnkhwospra37q" path="res://Assets/Images/orb.png" id="3_dfmax"]
-
-[sub_resource type="SystemFont" id="SystemFont_ho0eh"]
-font_names = PackedStringArray("Bodoni MT")
+[ext_resource type="FontFile" uid="uid://dsgpaw3wbslsg" path="res://Assets/Fonts/bodoni-mt-regular.ttf" id="5_j5f5y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nm3xk"]
-font = SubResource("SystemFont_ho0eh")
+font = ExtResource("5_j5f5y")
 font_size = 30
 
 [node name="Game" type="Control"]

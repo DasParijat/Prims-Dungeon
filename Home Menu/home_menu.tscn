@@ -1,15 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhmlycafuc6t8"]
+[gd_scene load_steps=8 format=3 uid="uid://bhmlycafuc6t8"]
 
 [ext_resource type="Script" path="res://Home Menu/home_menu.gd" id="1_mwd20"]
 [ext_resource type="Texture2D" uid="uid://bxr5f1evya50u" path="res://Assets/Images/Room/DungeonRoomBackground.png" id="1_pfbx8"]
 [ext_resource type="PackedScene" uid="uid://texi0kd634p6" path="res://Home Menu/Room Slider/menu_slider_option.tscn" id="3_cllnv"]
+[ext_resource type="FontFile" uid="uid://dsgpaw3wbslsg" path="res://Assets/Fonts/bodoni-mt-regular.ttf" id="3_kk8lu"]
 [ext_resource type="Texture2D" uid="uid://c14tpvlifmmx8" path="res://Assets/Images/Menu Icons/play_icon.png" id="4_8pi1f"]
-
-[sub_resource type="SystemFont" id="SystemFont_4h1jj"]
-font_names = PackedStringArray("Cascadia Mono")
+[ext_resource type="Theme" uid="uid://c1p00awktquis" path="res://Assets/Themes/pause_menu_button.tres" id="4_ra2w5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_alb2t"]
-font = SubResource("SystemFont_4h1jj")
+font = ExtResource("3_kk8lu")
 font_size = 100
 
 [node name="HomeMenu" type="Control"]
@@ -73,6 +72,7 @@ value = 10.0
 
 [node name="PlayButton" type="Button" parent="MarginContainer/VSplitContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_ra2w5")
 icon = ExtResource("4_8pi1f")
 icon_alignment = 1
 
