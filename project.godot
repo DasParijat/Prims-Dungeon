@@ -10,10 +10,12 @@ config_version=5
 
 [application]
 
-config/name="GameJamSpring2025"
+config/name="Prim's Dungeon"
+config/version="v1.0"
 run/main_scene="res://Home Menu/home_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.431373, 0.470588, 0.498039, 1)
+config/icon="res://Assets/Images/Room/DungeonRoomBackground.png"
 config/main_scene="res://Game/game.tscn"
 
 [autoload]
@@ -46,3 +48,10 @@ reset={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
 ]
 }
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.341903, 0.376391, 0.400505, 1)
