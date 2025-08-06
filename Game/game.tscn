@@ -60,13 +60,12 @@ layout_mode = 2
 theme_override_constants/separation = 200
 
 [node name="Orb" type="TextureButton" parent="Room"]
-visible = false
 layout_mode = 0
-offset_left = -50.0
+offset_left = -56.0
 offset_top = 75.0
-offset_right = 250.0
+offset_right = 244.0
 offset_bottom = 399.0
-scale = Vector2(0.298918, 0.528075)
+scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(13.3816, 3.78735)
 texture_normal = ExtResource("3_dfmax")
 
