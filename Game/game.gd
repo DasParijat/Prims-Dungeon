@@ -27,6 +27,7 @@ func _ready() -> void:
 	GRH.connect("game_reset", Callable(self, "_on_game_reset"))
 	GRH.connect("game_won", Callable(self, "_on_game_won"))
 	GRH.connect("game_leave", Callable(self, "_on_game_leave"))
+	GRH.connect("go_prev_room", Callable(self, "_on_go_prev_room"))
 	
 	create_dungeon()
 
@@ -62,7 +63,8 @@ func start_game(start_room : Room) -> void:
 
 func _input(event : InputEvent) -> void:
 	if event.is_action_pressed("reset"):
-		GRH.emit_signal("game_reset")
+		#GRH.emit_signal("game_reset")
+		_on_go_prev_room()
 
 func _on_game_reset() -> void:
 	if cur_room.letter_id != "START":
@@ -118,7 +120,7 @@ func _on_door_entered(door : Door) -> void:
 	
 	load_room(next_room)
 
-func load_previous_room() -> void:
+func _on_go_prev_room() -> void:
 	if prev_rooms.size() < 1:
 		return
 	var previous_room = prev_rooms.pop_back()

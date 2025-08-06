@@ -1,6 +1,7 @@
 extends Node
 
 signal door_entered(door : Door)
+signal go_prev_room()
 signal game_won()
 signal game_reset()
 signal game_leave()

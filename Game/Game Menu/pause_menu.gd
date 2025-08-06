@@ -14,6 +14,9 @@ func _on_menu_open_button_toggled(toggled_on: bool) -> void:
 	else:
 		menu.hide()
 
+func _on_prev_button_pressed() -> void:
+	GRH.emit_signal("go_prev_room")
+	
 func _on_reset_button_pressed() -> void:
 	menu_open_button.toggled.emit(false)
 	

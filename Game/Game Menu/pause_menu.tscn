@@ -44,6 +44,16 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/separation = 10
 
+[node name="PrevCountainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer"]
+layout_mode = 2
+
+[node name="Prev Button" type="Button" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer/PrevCountainer"]
+layout_mode = 2
+theme = ExtResource("2_04br8")
+icon = ExtResource("2_331ra")
+alignment = 0
+icon_alignment = 1
+
 [node name="ResetContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer"]
 layout_mode = 2
 
@@ -64,5 +74,6 @@ icon = ExtResource("3_bkp30")
 icon_alignment = 1
 
 [connection signal="toggled" from="MarginContainer/VBoxContainer/MarginContainer/MenuOpenButton" to="." method="_on_menu_open_button_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Menu/VBoxContainer/PrevCountainer/Prev Button" to="." method="_on_prev_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Menu/VBoxContainer/ResetContainer/Reset Button" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Menu/VBoxContainer/QuitContainer/Quit Button" to="." method="_on_quit_button_pressed"]
