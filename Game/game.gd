@@ -9,10 +9,12 @@ extends Node
 @export_category("Number of Rooms")
 @export var MIN_ROOMS : int
 @export var MAX_ROOMS : int 
+@export var MAX_PREV_ROOMS : int = 25
 
 var cur_dungeon : Dungeon
 
 var cur_room : Room
+var prev_rooms : Array[Room]
 var points : int
 
 var rooms_array : Array[Room]
@@ -102,11 +104,28 @@ func _on_door_entered(door : Door) -> void:
 		print("removing START")
 		rooms_array.pop_front()
 		doors_array.pop_front()
+		background.texture = preload("uid://bxr5f1evya50u")
+	
+	if !(cur_room.letter_id == "START"):
+		# save current room to previous if not start room
+		# and remove old previous rooms if array size > MAX_PREV_ROOMS
+		prev_rooms.append(cur_room)
+		if prev_rooms.size() > MAX_PREV_ROOMS: 
+			prev_rooms.pop_front()
+	#print("Previous Room: ", prev_rooms)
 	
 	cur_room = next_room
-	background.texture = preload("uid://bxr5f1evya50u")
+	
 	load_room(next_room)
 
+func load_previous_room() -> void:
+	if prev_rooms.size() < 1:
+		return
+	var previous_room = prev_rooms.pop_back()
+	cur_room = previous_room
+	
+	load_room(previous_room)
+	
 func update_label_text() -> void:
 	points_label.text = (str(GRH.points) + " points \n" 
 						+ (str(GRH.orbs_found) + " / " + str(rooms_array.size())) 
