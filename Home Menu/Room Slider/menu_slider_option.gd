@@ -10,6 +10,7 @@ extends Control
 
 func _ready() -> void:
 	slider_name_label.text = NAME
+	SLIDER.value = GRH.num_of_rooms
 	update_text(GRH.num_of_rooms)
 	
 func update_text(new_value) -> void:

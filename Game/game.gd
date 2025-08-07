@@ -28,6 +28,7 @@ func _ready() -> void:
 	GRH.connect("game_leave", Callable(self, "_on_game_leave"))
 	GRH.connect("go_prev_room", Callable(self, "_on_go_prev_room"))
 	
+	GRH.prev_rooms.clear()
 	create_dungeon()
 
 	background.texture = preload("uid://dkbm417ua0v0u")
