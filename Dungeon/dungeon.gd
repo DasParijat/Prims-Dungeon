@@ -41,7 +41,7 @@ func generate_doors() -> void:
 	#Door.new(rooms_array[0], rooms_array[1]).print_door()
 
 	#print("1ST LOOP")
-	## 2nd for loop (add random doors for each room)
+	## 1st for loop (add random doors for each room)
 	for loop in range(1): #range(clampi(round(rooms_array.size() / 5), 1, 2)):
 		for i in range(rooms_array.size() - 1):
 			var room1 : int
@@ -65,6 +65,7 @@ func generate_doors() -> void:
 	#print("2ND LOOP") 
 	# NOTE - Stopping this for loop can cause a small chance of creating an unconnected graph,
 	#		however, it may be more interesting to not have them alphabetically connected
+	## 2nd for loop (add doors between rooms)
 	for i in range(rooms_array.size() - 2):
 		#break
 		var new_door : Door = Door.new(rooms_array[i + 1], 
