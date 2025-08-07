@@ -1,5 +1,6 @@
 extends Node
 class_name PrimMST
+# This script handles calculating the total weight of the randomly generated graph/dungeon
 
 func calculate_mst(rooms_array : Array[Room], doors_array : Array[Door]) -> int:
 	## Calculates the total weight of the MST using Prim's Algorithm
@@ -16,7 +17,6 @@ func calculate_mst(rooms_array : Array[Room], doors_array : Array[Door]) -> int:
 			priority_queue.append(door)
 	
 	while priority_queue.size() > 0:
-		# Sort the priority queue initially
 		priority_queue.sort_custom(Callable(self, "_compare_door_cost"))
 		
 		# Get the door with the smallest cost

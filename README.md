@@ -22,7 +22,13 @@ dasparijat.github.io/Prims-Dungeon/
 
 -	Due to how the game is placed, players are forced to follow Prim's Algorithm in order to win, which in turn educates them on how the algorithm works.
 
-## Home Menu:
+## Project Description:
+
+### docs folder:
+- The "docs" folder holds the playable HTML version of the game
+- It's named docs to allow Github Pages to run it
+
+### Home Menu:
 - Allow player to set the number of rooms of the dungeon via a slider
 
 ### Game:

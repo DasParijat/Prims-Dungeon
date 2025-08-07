@@ -1,4 +1,5 @@
 extends Node
+# This autoload holding and handles changing scenes
 
 const HOME_MENU : String = "uid://bhmlycafuc6t8"
 const GAME : String = "uid://dktjfoar41ceu"

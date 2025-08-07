@@ -1,5 +1,6 @@
 extends Node
 class_name Door # AKA edge
+# This script relates to the logic of the door
 
 #{Room 1 = Room(), Room 2 = Room(), Weight/Cost : int, is_locked : bool}
 
@@ -16,7 +17,9 @@ func _init(_room1 : Room, _room2 : Room) -> void:
 	is_locked = true
 
 func print_door() -> void:
-	var condition : bool = room1.letter_id == "A" or room2.letter_id == "A"
+	## Prints room1 and room2 of door in readable format
+	# Condition is modified in code to see specific doors for debugging
+	var condition : bool = true
 	
 	if condition: print("{",room1.letter_id, ", ", room2.letter_id,"}")
 	

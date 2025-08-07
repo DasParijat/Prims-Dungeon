@@ -19,8 +19,6 @@ var points : int
 var rooms_array : Array[Room]
 var doors_array : Array[Door]
 
-var room_transition : bool = false
-
 func _ready() -> void:
 	GRH.connect("door_entered", Callable(self, "_on_door_entered"))
 	GRH.connect("game_reset", Callable(self, "_on_game_reset"))
@@ -35,7 +33,6 @@ func _ready() -> void:
 	start_game(rooms_array[0])
 
 func create_dungeon() -> void:
-	randomize()
 	cur_dungeon = Dungeon.new(GRH.num_of_rooms)
 	rooms_array = cur_dungeon.rooms_array
 	doors_array = cur_dungeon.doors_array
@@ -62,6 +59,7 @@ func start_game(start_room : Room) -> void:
 	load_room(cur_room)
 
 func _on_game_reset() -> void:
+	## Start game again if not in starting room
 	if cur_room.letter_id != "START":
 		start_game(rooms_array[0])
 		GRH.prev_rooms.clear()
@@ -69,6 +67,7 @@ func _on_game_reset() -> void:
 		printerr("Game: IN START ROOM, CAN'T RESET")
 	
 func load_room(room : Room) -> void:
+	## Loads in indiviual rooms
 	update_label_text()
 	color_modulate.color = room.mod_color
 	
@@ -77,7 +76,6 @@ func load_room(room : Room) -> void:
 		child.queue_free()
 
 	# Find all doors connected to current room
-	#print(room.letter_id)
 	for door in doors_array:
 		if door.check_rooms(room):
 			var door_scene = preload("uid://bf8rl0c8yy31o").instantiate()
@@ -91,7 +89,8 @@ func load_room(room : Room) -> void:
 		orb.show()
 	
 func _on_door_entered(door : Door) -> void:
-	print(door.room1.letter_id, " ", door.room2.letter_id)
+	#print(door.room1.letter_id, " ", door.room2.letter_id)
+	# Get the next room the door connects to
 	var next_room : Room
 	if door.room1 == cur_room:
 		next_room = door.room2
@@ -99,7 +98,7 @@ func _on_door_entered(door : Door) -> void:
 		next_room = door.room1
 	
 	if cur_room.letter_id == "START":
-		print("removing START")
+		# Remove starting room after leaving it
 		rooms_array.pop_front()
 		doors_array.pop_front()
 		background.texture = preload("uid://bxr5f1evya50u")
@@ -110,31 +109,37 @@ func _on_door_entered(door : Door) -> void:
 		GRH.prev_rooms.append(cur_room)
 		if GRH.prev_rooms.size() > MAX_PREV_ROOMS: 
 			GRH.prev_rooms.pop_front()
-	print("Previous Room: ", GRH.prev_rooms)
+	#print("Previous Room: ", GRH.prev_rooms)
 	
+	# Load next room
 	cur_room = next_room
-	
 	load_room(next_room)
 
 func _on_go_prev_room() -> void:
 	if GRH.prev_rooms.size() < 1:
 		return
+	
 	var previous_room = GRH.prev_rooms.pop_back()
 	cur_room = previous_room
 	
 	load_room(previous_room)
 	
 func update_label_text() -> void:
+	## Update UI text on top left
 	points_label.text = (str(GRH.points) + " points \n" 
 						+ (str(GRH.orbs_found) + " / " + str(rooms_array.size())) 
 						+ " orbs \nRoom " + cur_room.letter_id)
 
 func _on_game_won() -> void:
+	## Create and go to WIN room
 	cur_room = Room.new("WIN", Color(0.8, 0.8, 0.8))
 	background.texture = preload("uid://57t1euthr6ct")
 	load_room(cur_room)
 
 func _on_orb_pressed() -> void:
+	## Update orb related information
+	## And find out if player found all orbs
+	
 	cur_room.orb_found = true
 	GRH.orbs_found += 1
 	update_label_text()

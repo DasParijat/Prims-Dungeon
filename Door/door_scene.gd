@@ -1,5 +1,6 @@
 extends Control
 class_name DoorScene
+# This script relates to the actual door scene
 
 @onready var button : Button = $"."
 @onready var texture : TextureRect = $TextureRect
@@ -18,6 +19,7 @@ func _ready() -> void:
 func set_door_graphic() -> void:
 	var connected_room : Room = door.room1 if door.room2 == cur_room else door.room2
 	
+	# Set texture and text on door
 	if door.is_locked:
 		texture.texture = explored_door_closed_img if connected_room.orb_found else door_closed_img
 		cost.text = str(door.cost)
