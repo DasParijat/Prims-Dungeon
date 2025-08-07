@@ -14,7 +14,6 @@ extends Node
 var cur_dungeon : Dungeon
 
 var cur_room : Room
-var prev_rooms : Array[Room]
 var points : int
 
 var rooms_array : Array[Room]
@@ -61,14 +60,10 @@ func start_game(start_room : Room) -> void:
 	if cur_room.letter_id != "START": background.texture = preload("uid://bxr5f1evya50u")
 	load_room(cur_room)
 
-func _input(event : InputEvent) -> void:
-	if event.is_action_pressed("reset"):
-		#GRH.emit_signal("game_reset")
-		_on_go_prev_room()
-
 func _on_game_reset() -> void:
 	if cur_room.letter_id != "START":
 		start_game(rooms_array[0])
+		GRH.prev_rooms.clear()
 	else:
 		printerr("Game: IN START ROOM, CAN'T RESET")
 	
@@ -111,19 +106,19 @@ func _on_door_entered(door : Door) -> void:
 	if !(cur_room.letter_id == "START"):
 		# save current room to previous if not start room
 		# and remove old previous rooms if array size > MAX_PREV_ROOMS
-		prev_rooms.append(cur_room)
-		if prev_rooms.size() > MAX_PREV_ROOMS: 
-			prev_rooms.pop_front()
-	#print("Previous Room: ", prev_rooms)
+		GRH.prev_rooms.append(cur_room)
+		if GRH.prev_rooms.size() > MAX_PREV_ROOMS: 
+			GRH.prev_rooms.pop_front()
+	print("Previous Room: ", GRH.prev_rooms)
 	
 	cur_room = next_room
 	
 	load_room(next_room)
 
 func _on_go_prev_room() -> void:
-	if prev_rooms.size() < 1:
+	if GRH.prev_rooms.size() < 1:
 		return
-	var previous_room = prev_rooms.pop_back()
+	var previous_room = GRH.prev_rooms.pop_back()
 	cur_room = previous_room
 	
 	load_room(previous_room)

@@ -45,16 +45,18 @@ offset_bottom = 40.0
 theme_override_constants/separation = 10
 
 [node name="PrevCountainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Prev Button" type="Button" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer/PrevCountainer"]
 layout_mode = 2
 theme = ExtResource("2_04br8")
-icon = ExtResource("2_331ra")
+icon = ExtResource("4_kdlrd")
 alignment = 0
 icon_alignment = 1
 
 [node name="ResetContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Reset Button" type="Button" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer/ResetContainer"]
