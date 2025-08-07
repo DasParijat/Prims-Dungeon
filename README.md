@@ -18,14 +18,7 @@ This was a Godot 4.3 game that was made for the Marist Game Developer Club's Hac
 	the player pays for via points they get at the start. The points they get at the start is
 	the same as the total weight of the MST version of the graph/dungeon they play in, AKA,
 	player's are forced to follow Prim's Algo in order to win.
-	
-## Current Plans :
-- Fix Prim's MST (DONE)
-	- Possibly write tests for prim_mst class
-- Possibly add a menu to play a new game (IN WORK)
-- Change orb texture
-- Add more visual/audio effects
-- Have text in-game be more descriptive and be their own nodes, rather then coming with the textures as they are now
+
 
 ## Objects:
 - These were how the objects for the game were initially planned in the Game Jam
