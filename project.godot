@@ -39,6 +39,7 @@ folder_colors={
 "res://Global Scripts/": "teal",
 "res://Home Menu/": "yellow",
 "res://Room/": "green",
+"res://Tests/": "blue",
 "res://docs/": "gray"
 }
 

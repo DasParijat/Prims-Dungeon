@@ -20,7 +20,8 @@ func _init(num_of_rooms : int) -> void:
 	
 func generate_rooms(num_of_rooms : int = 10) -> void:
 	## Generate rooms, each with a random modulate value
-	num_of_rooms_validity_check(num_of_rooms)
+	if num_of_rooms < 5 or num_of_rooms > 26:
+		num_of_rooms = 10
 	
 	for i in range(num_of_rooms):
 		rooms_array.append(
@@ -30,11 +31,6 @@ func generate_rooms(num_of_rooms : int = 10) -> void:
 						,randf_range(0.5,0.8)))
 			)
 		#print("added room: ", rooms_array[i + 1].letter_id)
-
-func num_of_rooms_validity_check(num_of_rooms) -> void:
-	if num_of_rooms < 5 or num_of_rooms > 26:
-		num_of_rooms = 10
-		printerr("Game: GIVEN NUM_OF_ROOMS NOT VALID, SET TO 10")
 
 func generate_doors() -> void:
 	## Generate doors for all rooms to connect the dungeon/graph
