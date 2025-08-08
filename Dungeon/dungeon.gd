@@ -20,9 +20,7 @@ func _init(num_of_rooms : int) -> void:
 	
 func generate_rooms(num_of_rooms : int = 10) -> void:
 	## Generate rooms, each with a random modulate value
-	if num_of_rooms < 5 or num_of_rooms > 26:
-		num_of_rooms = 10
-		printerr("Game: GIVEN NUM_OF_ROOMS NOT VALID, SET TO 10")
+	num_of_rooms_validity_check(num_of_rooms)
 	
 	for i in range(num_of_rooms):
 		rooms_array.append(
@@ -33,42 +31,55 @@ func generate_rooms(num_of_rooms : int = 10) -> void:
 			)
 		#print("added room: ", rooms_array[i + 1].letter_id)
 
+func num_of_rooms_validity_check(num_of_rooms) -> void:
+	if num_of_rooms < 5 or num_of_rooms > 26:
+		num_of_rooms = 10
+		printerr("Game: GIVEN NUM_OF_ROOMS NOT VALID, SET TO 10")
 
 func generate_doors() -> void:
 	## Generate doors for all rooms to connect the dungeon/graph
-	# Starting door
-	# NOTE - no other room should connect to starting door besides A
+	add_starting_door()
+	add_random_doors()
+	connect_doors_alphabetical()
+
+func add_starting_door() -> void:
+	## Adds door that connects starting room to Room A
 	doors_array = [Door.new(rooms_array[0], rooms_array[1])] # starting door
 	doors_array[0].cost = 0 # make sure start door is free
-	#Door.new(rooms_array[0], rooms_array[1]).print_door()
-
-	#print("1ST LOOP")
-	## 1st for loop (add random doors for each room)
+	
+func add_random_doors() -> void:
+	## Adds random doors to all rooms
 	for i in range(rooms_array.size() - 1):
+		# Outer loop iterates through each room to give at least one door
 		var room1 : int
 		var room2 : int
 		var new_door : Door
 		
 		for j in range(rooms_array.size()):
+			# Inner loop iterates through possible doors until it comes
+			# across one that doesn't exist in room i
 			room1 = i + 1
 			room2 = randi_range(1, rooms_array.size() - 1)
-			while room2 == room1: #or abs(room2 - room1) == 1:
+			while room2 == room1:
+				# Make sure r1 & r2 don't match for the new door
 				room2 = randi_range(1, rooms_array.size() - 1)
 				
 			if not has_reverse_door(rooms_array[room1], rooms_array[room2]):
+				# This is what checks if a new door is valid
 				new_door = Door.new(rooms_array[room1], rooms_array[room2])
 				break
 		
 		if new_door:
+			# If a valid new door was found, it adds it to the room
 			doors_array.append(new_door)
 			new_door.print_door()
 	
-	#print("2ND LOOP") 
-	# NOTE - Stopping this for loop can cause a small chance of creating an unconnected graph,
+func connect_doors_alphabetical() -> void:
+	## Adds any extra doors needed to connect all rooms in dungeon
+	## by connecting the rooms in alphabetical order.
+	# NOTE - Removing this function can cause a small chance of creating an unconnected graph,
 	#		however, it may be more interesting to not have them alphabetically connected
-	## 2nd for loop (add doors between rooms)
 	for i in range(rooms_array.size() - 2):
-		#break
 		var new_door : Door = Door.new(rooms_array[i + 1], 
 										rooms_array[i + 2])
 		if (new_door not in doors_array) and (not has_reverse_door(rooms_array[i + 1], rooms_array[i + 2])):
@@ -76,6 +87,7 @@ func generate_doors() -> void:
 			new_door.print_door()
 
 func has_reverse_door(room1 : Room, room2 : Room) -> bool:
+	## Checks if given room1/room2 already has a door representing it's connection
 	for door in doors_array:
 		if (door.room1 == room2 and door.room2 == room1) or (door.room1 == room1 and door.room2 == room2):
 			return true
