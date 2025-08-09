@@ -68,7 +68,7 @@ func add_random_doors() -> void:
 		if new_door:
 			# If a valid new door was found, it adds it to the room
 			doors_array.append(new_door)
-			new_door.print_door()
+			# new_door.print_door()
 	
 func connect_doors_alphabetical() -> void:
 	## Adds any extra doors needed to connect all rooms in dungeon
@@ -80,7 +80,7 @@ func connect_doors_alphabetical() -> void:
 										rooms_array[i + 2])
 		if (new_door not in doors_array) and (not has_reverse_door(rooms_array[i + 1], rooms_array[i + 2])):
 			doors_array.append(new_door)
-			new_door.print_door()
+			#new_door.print_door()
 
 func has_reverse_door(room1 : Room, room2 : Room) -> bool:
 	## Checks if given room1/room2 already has a door representing it's connection

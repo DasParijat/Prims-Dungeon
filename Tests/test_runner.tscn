@@ -1,6 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cj8dmv7hgei8t"]
 
-[ext_resource type="Script" path="res://Tests/test_runner.gd" id="1_741qb"]
+[ext_resource type="Script" path="res://Tests/dungeon_tests.gd" id="1_741qb"]
 
 [node name="TestRunner" type="Node"]
+
+[node name="TestDungeon" type="Node" parent="."]
 script = ExtResource("1_741qb")

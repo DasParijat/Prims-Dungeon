@@ -1,13 +1,9 @@
-# TestDungeon.gd
 extends Node
 
-# We need to preload the class we're testing.
-const Dungeon = preload("res://Dungeon/dungeon.gd")
 
 var total_tests = 0
 var passed_tests = 0
 
-# The _ready function will be our test runner.
 func _ready() -> void:
 	run_all_tests()
 	
@@ -31,8 +27,8 @@ func run_all_tests() -> void:
 	
 	print("\n--- All tests complete ---")
 
-# A helper function to report pass/fail status
 func _assert(condition: bool, test_name: String) -> void:
+	## A helper function to report pass/fail status
 	total_tests += 1
 	if condition:
 		passed_tests += 1
@@ -75,7 +71,7 @@ func test_start_door_properties() -> void:
 	_assert(start_door_found, "A door connecting START to Room A must exist.")
 
 func test_graph_is_always_connected() -> void:
-	# This is the most important test. We run it a few times to be sure.
+	## This is the most important test. We run it a few times to be sure.
 	var test_runs = 20
 	var all_runs_connected = true
 	for i in range(test_runs):
@@ -119,10 +115,10 @@ func test_mst_calculation() -> void:
 	_assert(dungeon.points_needed_to_win >= 0, "MST cost (points_needed_to_win) should be >= 0.")
 	_assert(typeof(dungeon.points_needed_to_win) == TYPE_INT, "MST cost should be an integer.")
 
-# --- HELPER ALGORITHMS ---
+## --- HELPER FUNCTIONS ---
 
-# Checks if all rooms in the dungeon are reachable from the start room using BFS.
 func _is_graph_connected(dungeon: Dungeon) -> bool:
+	## Checks if all rooms in the dungeon are reachable from the start room using BFS.
 	if dungeon.rooms_array.is_empty():
 		return true # An empty graph is trivially connected.
 
