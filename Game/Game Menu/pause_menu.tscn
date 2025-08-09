@@ -77,6 +77,6 @@ icon = ExtResource("3_bkp30")
 icon_alignment = 1
 
 [connection signal="toggled" from="MarginContainer/VBoxContainer/MarginContainer/MenuOpenButton" to="." method="_on_menu_open_button_toggled"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Menu/VBoxContainer/PrevCountainer/Prev Button" to="." method="_on_prev_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Menu/VBoxContainer/ResetContainer/Reset Button" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Menu/VBoxContainer/QuitContainer/Quit Button" to="." method="_on_quit_button_pressed"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/Menu/VBoxContainer/PrevCountainer/Prev Button" to="." method="_on_prev_button"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/Menu/VBoxContainer/ResetContainer/Reset Button" to="." method="_on_reset_button"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/Menu/VBoxContainer/QuitContainer/Quit Button" to="." method="_on_quit_button"]

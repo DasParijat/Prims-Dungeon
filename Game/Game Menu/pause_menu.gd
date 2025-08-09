@@ -33,13 +33,13 @@ func _on_menu_open_button_toggled(toggled_on: bool) -> void:
 	else:
 		menu.hide()
 
-func _on_prev_button_pressed() -> void:
+func _on_prev_button() -> void:
 	GRH.emit_signal("go_prev_room")
 	
 	if GRH.prev_rooms.is_empty() or game_has_won:
 		prev_countainer.hide()
 	
-func _on_reset_button_pressed() -> void:
+func _on_reset_button() -> void:
 	menu_open_button.toggled.emit(false) # this hides the menu after reset
 	game_has_won = false # If resetting level on game won screen, this sets it back to false
 	
@@ -48,7 +48,7 @@ func _on_reset_button_pressed() -> void:
 	if GRH.prev_rooms.size() < 1:
 		reset_container.hide()
 
-func _on_quit_button_pressed() -> void:
+func _on_quit_button() -> void:
 	GRH.emit_signal("game_leave")
 
 func _on_game_won() -> void:

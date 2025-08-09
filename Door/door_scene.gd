@@ -32,7 +32,7 @@ func set_door_graphic() -> void:
 		texture.texture = door_opened_img
 		cost.text = connected_room.letter_id
 		
-func _on_pressed() -> void:
+func _on_clicked() -> void:
 	if door.is_locked:
 		if door.can_unlock(GRH.points):
 			door.is_locked = false

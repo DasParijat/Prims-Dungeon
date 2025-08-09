@@ -53,4 +53,4 @@ theme_override_font_sizes/font_size = 100
 text = "9"
 label_settings = SubResource("LabelSettings_6ad5j")
 
-[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="button_up" from="." to="." method="_on_clicked"]
