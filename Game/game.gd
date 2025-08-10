@@ -1,5 +1,11 @@
 extends Node
 
+const DOOR_SCENE : PackedScene = preload("uid://bf8rl0c8yy31o")
+
+const NORMAL_BACKGROUND : Texture2D = preload("uid://bxr5f1evya50u")
+const START_BACKGROUND : Texture2D = preload("uid://dkbm417ua0v0u")
+const WIN_BACKGROUND : Texture2D = preload("uid://57t1euthr6ct")
+
 @onready var color_modulate : CanvasModulate = $Room/Background/ColorModulate
 @onready var door_container : HBoxContainer = $Room/MarginContainer/DoorContainer
 @onready var background: TextureRect = $Room/Background
@@ -29,7 +35,7 @@ func _ready() -> void:
 	GRH.prev_rooms.clear()
 	create_dungeon()
 
-	background.texture = preload("uid://dkbm417ua0v0u")
+	background.texture = START_BACKGROUND
 	start_game(rooms_array[0])
 
 func create_dungeon() -> void:
@@ -55,7 +61,7 @@ func start_game(start_room : Room) -> void:
 	
 	# Set up current room
 	cur_room = start_room
-	if cur_room.letter_id != "START": background.texture = preload("uid://bxr5f1evya50u")
+	if cur_room.letter_id != "START": background.texture = NORMAL_BACKGROUND
 	load_room(cur_room)
 
 func _on_game_reset() -> void:
@@ -78,7 +84,7 @@ func load_room(room : Room) -> void:
 	# Find all doors connected to current room
 	for door in doors_array:
 		if door.check_rooms(room):
-			var door_scene = preload("uid://bf8rl0c8yy31o").instantiate()
+			var door_scene = DOOR_SCENE.instantiate()
 			door_scene.door = door
 			door_scene.cur_room = cur_room
 			door_container.add_child(door_scene)
@@ -101,7 +107,7 @@ func _on_door_entered(door : Door) -> void:
 		# Remove starting room after leaving it
 		rooms_array.pop_front()
 		doors_array.pop_front()
-		background.texture = preload("uid://bxr5f1evya50u")
+		background.texture = NORMAL_BACKGROUND
 	
 	if !(cur_room.letter_id == "START"):
 		# save current room to previous if not start room
@@ -133,7 +139,7 @@ func update_label_text() -> void:
 func _on_game_won() -> void:
 	## Create and go to WIN room
 	cur_room = Room.new("WIN", Color(0.8, 0.8, 0.8))
-	background.texture = preload("uid://57t1euthr6ct")
+	background.texture = WIN_BACKGROUND
 	load_room(cur_room)
 
 func _on_orb_pressed() -> void:
