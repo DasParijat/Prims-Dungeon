@@ -69,7 +69,14 @@ scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(13.3816, 3.78735)
 texture_normal = ExtResource("3_dfmax")
 
-[node name="LightOverlay" type="PointLight2D" parent="Room"]
+[node name="LightOverlay" type="TextureRect" parent="Room"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_37ubt")
 
 [node name="UIContainer" type="MarginContainer" parent="."]

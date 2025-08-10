@@ -1,11 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://texi0kd634p6"]
+[gd_scene load_steps=5 format=3 uid="uid://texi0kd634p6"]
 
 [ext_resource type="Script" path="res://Home Menu/Room Slider/menu_slider_option.gd" id="1_k3ed5"]
 [ext_resource type="FontFile" uid="uid://dsgpaw3wbslsg" path="res://Assets/Fonts/bodoni-mt-regular.ttf" id="2_54uvo"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_jtjco"]
+[sub_resource type="LabelSettings" id="LabelSettings_j0p76"]
 font = ExtResource("2_54uvo")
-font_size = 30
+font_size = 40
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_offset = Vector2(5.215, 4.86)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j3uqf"]
+font = ExtResource("2_54uvo")
+font_size = 40
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_offset = Vector2(5.215, 4.86)
 
 [node name="menu_slider_option" type="VBoxContainer"]
 script = ExtResource("1_k3ed5")
@@ -17,11 +27,11 @@ alignment = 1
 [node name="Slider Name" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 text = "Room Number - "
-label_settings = SubResource("LabelSettings_jtjco")
+label_settings = SubResource("LabelSettings_j0p76")
 horizontal_alignment = 1
 
 [node name="Slider Value" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 text = "0"
-label_settings = SubResource("LabelSettings_jtjco")
+label_settings = SubResource("LabelSettings_j3uqf")
 horizontal_alignment = 1
