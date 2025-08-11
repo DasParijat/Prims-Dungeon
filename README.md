@@ -43,7 +43,7 @@ dasparijat.github.io/Prims-Dungeon/
 	- Go back to the menu
 		
 ### Dungeon/Graph Generation (Hard):
-- Generate a gicen number of rooms (Min is 5, max is 25, default is 10)
+- Generate a given number of rooms (Min is 5, max is 25, default is 10)
 - Generate random edges
 	- Go to each room and give them an edge to any other room (randomly)
 	- 1st Loop: Go through each room and give them edges to random rooms (A -> Random)
@@ -68,7 +68,7 @@ dasparijat.github.io/Prims-Dungeon/
 	- Get rid of doors and add Room B's doors
 	- Change modulate color of room
 	- Add orb if room B was undiscovered
-- Doors are managed seperately from room
+- Doors are managed separately from room
 	- On each transition, a VBOX generates the correct doors based on what room it's transitioning in
 	- For Room B, it checks through all edges for edges that contain B, then add it as a door
 		
