@@ -8,12 +8,16 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Prim's Dungeon"
 config/version="v1.0"
 run/main_scene="res://Home Menu/home_menu.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(0.431373, 0.470588, 0.498039, 1)
 config/icon="res://Assets/Images/Room/DungeonRoomBackground.png"
 config/main_scene="res://Game/game.tscn"
