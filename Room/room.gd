@@ -11,3 +11,8 @@ func _init(_id : String, _mod_color : Color) -> void:
 	mod_color = _mod_color
 	orb_found = false
 	
+func set_orb_found(value: bool):
+	if orb_found != value:
+		orb_found = value
+		# Emit signal indicating that the node's state has changed.
+		emit_signal("discovered", letter_id)

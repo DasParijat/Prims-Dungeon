@@ -19,6 +19,8 @@ const WIN_BACKGROUND : Texture2D = preload("uid://57t1euthr6ct")
 
 var cur_dungeon : Dungeon
 
+var minimap_manager : MinimapManager
+
 var cur_room : Room
 var points : int
 
@@ -37,6 +39,12 @@ func _ready() -> void:
 
 	background.texture = START_BACKGROUND
 	start_game(rooms_array[0])
+	
+	minimap_manager = MinimapManager.new()
+	
+	# Connect the MinimapManager slot to its own internal signal for cleanup
+	if minimap_manager:
+		minimap_manager.connect("graph_updated_needed", Callable(self, "_on_game_state_change"))
 
 func create_dungeon() -> void:
 	cur_dungeon = Dungeon.new(GRH.num_of_rooms)
@@ -153,6 +161,15 @@ func _on_orb_pressed() -> void:
 		GRH.emit_signal("game_won")
 		
 	orb.hide()
+	
+func _on_game_state_change():
+	# This acts as the central dispatcher slot. It ensures that any event
+	# that changes state (door enter, orb pickup) causes a redraw check.
+	if minimap_manager:
+		minimap_manager.update_graph_data()
 
 func _on_game_leave() -> void:
-	GScene.change_scene(GScene.HOME_MENU)
+	# Clean up signal connections when exiting the game scene.
+	GRH.disconnect("door_entered", Callable(self, "_on_door_entered"))
+	GRH.disconnect("game_reset", Callable(self, "_on_game_reset"))
+	minimap_manager.disconnect("graph_updated_needed", Callable(self, "_on_game_state_change"))
