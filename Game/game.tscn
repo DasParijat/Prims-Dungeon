@@ -99,4 +99,7 @@ offset_top = 10.0
 offset_right = 960.0
 offset_bottom = 47.0
 
+[node name="Minimap" parent="." unique_id=369294707 instance=ExtResource("6_oomkl")]
+layout_mode = 1
+
 [connection signal="pressed" from="Room/Orb" to="." method="_on_orb_pressed"]

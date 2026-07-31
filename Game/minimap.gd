@@ -13,9 +13,9 @@ var panel_style: StyleBoxFlat
 
 func _ready() -> void:
 	panel_style = StyleBoxFlat.new()
-	panel_style.bg_color = Color(0.04, 0.05, 0.08, 0.78)
-	panel_style.border_color = Color(0.75, 0.68, 0.45, 0.8)
-	panel_style.set_border_width_all(2)
+	panel_style.bg_color = Color(0.039, 0.051, 0.078, 0.0)
+	#panel_style.border_color = Color(0.75, 0.68, 0.45, 0.8)
+	#panel_style.set_border_width_all(2)
 	panel_style.set_corner_radius_all(8)
 
 func set_dungeon_graph(new_rooms: Array[Room], new_doors: Array[Door], active_room: Room) -> void:
@@ -29,7 +29,7 @@ func _draw() -> void:
 		return
 
 	draw_style_box(panel_style, Rect2(Vector2.ZERO, size))
-	draw_string(get_theme_default_font(), Vector2(12.0, 22.0), "DUNGEON MAP", HORIZONTAL_ALIGNMENT_LEFT, -1.0, 14, Color(0.88, 0.84, 0.7))
+	#draw_string(get_theme_default_font(), Vector2(12.0, 22.0), "DUNGEON MAP", HORIZONTAL_ALIGNMENT_LEFT, -1.0, 14, Color(0.88, 0.84, 0.7))
 
 	var positions := _get_room_positions()
 	_draw_doors(positions)
@@ -55,7 +55,7 @@ func _draw_doors(positions: Dictionary) -> void:
 		if not positions.has(door.room1) or not positions.has(door.room2):
 			continue
 
-		var color := Color(0.33, 0.37, 0.45, 0.9) if door.is_locked else Color(0.78, 0.68, 0.28, 0.95)
+		var color := Color(0.33, 0.37, 0.45, 0.9) if door.is_locked else Color(0.7, 0, 0, 0.95)
 		var width := 2.0 if door.is_locked else 3.0
 		draw_line(positions[door.room1], positions[door.room2], color, width, true)
 
@@ -64,11 +64,11 @@ func _draw_rooms(positions: Dictionary) -> void:
 	for room in rooms:
 		var position: Vector2 = positions[room]
 		var fill_color := room.mod_color.darkened(0.25)
-		var outline_color := Color(0.8, 0.8, 0.8, 0.75) if room.orb_found else Color(0.42, 0.42, 0.46, 0.8)
+		var outline_color := Color(0.931, 0.0, 0.113, 0.569) if room.orb_found else Color(0.42, 0.42, 0.46, 0.8)
 		var outline_width := 2.0
 
 		if room == current_room:
-			fill_color = Color(1.0, 0.82, 0.24)
+			fill_color = Color(1.0, 0.29, 0.24, 1.0)
 			outline_color = Color.WHITE
 			outline_width = 3.0
 
