@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cpy0flbvigrsd" path="res://Game/Game Menu/pause_menu.tscn" id="2_ilt8h"]
 [ext_resource type="Texture2D" uid="uid://dnkhwospra37q" path="res://Assets/Images/orb.png" id="3_dfmax"]
 [ext_resource type="FontFile" uid="uid://dsgpaw3wbslsg" path="res://Assets/Fonts/bodoni-mt-regular.ttf" id="5_j5f5y"]
+[ext_resource type="PackedScene" uid="uid://c7ob17j3jaxc1" path="res://Game/minimap.tscn" id="6_oomkl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nm3xk"]
 font = ExtResource("5_j5f5y")
@@ -90,6 +91,9 @@ offset_bottom = 42.0
 layout_mode = 2
 text = "30 Points"
 label_settings = SubResource("LabelSettings_nm3xk")
+
+[node name="Minimap" parent="." unique_id=369294707 instance=ExtResource("6_oomkl")]
+layout_mode = 1
 
 [node name="pause_menu" parent="." unique_id=326289247 instance=ExtResource("2_ilt8h")]
 layout_mode = 0

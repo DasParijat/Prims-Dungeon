@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c7ob17j3jaxc1"]
+
+[ext_resource type="Script" uid="uid://dikmfruqrdxav" path="res://Game/minimap.gd" id="1_k74m5"]
+
+[node name="Minimap" type="Control" unique_id=369294707]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -232.0
+offset_right = 292.0
+offset_bottom = -12.0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_k74m5")
