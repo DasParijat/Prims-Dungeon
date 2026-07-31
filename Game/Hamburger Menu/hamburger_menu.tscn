@@ -1,76 +1,76 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpy0flbvigrsd"]
+[gd_scene format=3 uid="uid://cpy0flbvigrsd"]
 
-[ext_resource type="Script" path="res://Game/Game Menu/pause_menu.gd" id="1_0kagn"]
+[ext_resource type="Script" uid="uid://bfxfo0l4fd0nu" path="res://Game/Hamburger Menu/hamburger_menu.gd" id="1_0kagn"]
 [ext_resource type="Theme" uid="uid://c1p00awktquis" path="res://Assets/Themes/pause_menu_button.tres" id="2_04br8"]
 [ext_resource type="Texture2D" uid="uid://d1tllht6le8ot" path="res://Assets/Images/Menu Icons/reset_icon.png" id="2_331ra"]
 [ext_resource type="Texture2D" uid="uid://b1tgjk34ta3k4" path="res://Assets/Images/Menu Icons/leave_icon.png" id="3_bkp30"]
 [ext_resource type="Texture2D" uid="uid://ci0ivhny7g1ey" path="res://Assets/Images/Menu Icons/hamburger_icon.png" id="4_kdlrd"]
 [ext_resource type="Texture2D" uid="uid://dlc3llrduaymn" path="res://Assets/Images/Menu Icons/go_back_icon.png" id="4_m2rih"]
 
-[node name="pause_menu" type="Control"]
+[node name="hamburger_menu" type="Control" unique_id=1415454546]
 layout_mode = 3
 anchors_preset = 0
 pivot_offset = Vector2(109, 0)
 mouse_filter = 2
 script = ExtResource("1_0kagn")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2046081735]
 layout_mode = 1
 offset_right = 208.0
 offset_bottom = 218.0
 theme_override_constants/margin_right = 100
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1553128710]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1393462237]
 layout_mode = 2
 
-[node name="MenuOpenButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="MenuOpenButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=674915948]
 layout_mode = 2
 theme = ExtResource("2_04br8")
 toggle_mode = true
 icon = ExtResource("4_kdlrd")
 icon_alignment = 1
 
-[node name="Menu" type="Control" parent="MarginContainer/VBoxContainer"]
+[node name="Menu" type="Control" parent="MarginContainer/VBoxContainer" unique_id=1682926641]
 visibility_layer = 2
 layout_mode = 2
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Menu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Menu" unique_id=520660156]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/separation = 10
 
-[node name="PrevCountainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer"]
+[node name="PrevCountainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer" unique_id=192081265]
 visible = false
 layout_mode = 2
 
-[node name="Prev Button" type="Button" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer/PrevCountainer"]
+[node name="Prev Button" type="Button" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer/PrevCountainer" unique_id=1597830879]
 layout_mode = 2
 theme = ExtResource("2_04br8")
 icon = ExtResource("4_m2rih")
 alignment = 0
 icon_alignment = 1
 
-[node name="ResetContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer"]
+[node name="ResetContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer" unique_id=1829538637]
 visible = false
 layout_mode = 2
 
-[node name="Reset Button" type="Button" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer/ResetContainer"]
+[node name="Reset Button" type="Button" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer/ResetContainer" unique_id=82208828]
 layout_mode = 2
 theme = ExtResource("2_04br8")
 icon = ExtResource("2_331ra")
 alignment = 0
 icon_alignment = 1
 
-[node name="QuitContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer"]
+[node name="QuitContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer" unique_id=1825710198]
 layout_mode = 2
 
-[node name="Quit Button" type="Button" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer/QuitContainer"]
+[node name="Quit Button" type="Button" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer/QuitContainer" unique_id=796483432]
 layout_mode = 2
 theme = ExtResource("2_04br8")
 icon = ExtResource("3_bkp30")
