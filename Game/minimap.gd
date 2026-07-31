@@ -12,6 +12,13 @@ var current_room: Room
 var panel_style: StyleBoxFlat
 
 func _ready() -> void:
+	# The minimap is display-only. Keep it completely out of the input chain so
+	# its bottom-left rect can never intercept clicks intended for room controls.
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	set_process_input(false)
+	set_process_unhandled_input(false)
+	set_process_shortcut_input(false)
+
 	panel_style = StyleBoxFlat.new()
 	panel_style.bg_color = Color(0.039, 0.051, 0.078, 0.0)
 	#panel_style.border_color = Color(0.75, 0.68, 0.45, 0.8)
