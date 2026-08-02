@@ -21,14 +21,22 @@ func set_door_graphic() -> void:
 	
 	# Set texture and text on door
 	if door.is_locked:
-		texture.texture = explored_door_closed_img if connected_room.orb_found else door_closed_img
+		if connected_room.orb_found:
+			tooltip_text = "Door to already explored room"
+			texture.texture = explored_door_closed_img
+		else:
+			tooltip_text = "Can unlock door"
+			texture.texture = door_closed_img
+			
 		cost.text = str(door.cost)
 		
 		if door.cost > GRH.points:
 			# Indicate visually player lacks enough points for the door
+			tooltip_text = "Not enough points to unlock door"
 			cost.modulate = Color(0.7, 0, 0)
 			texture.modulate = Color(0.8, 0.8, 0.8)
 	else:
+		tooltip_text = "Door to Room " + connected_room.letter_id
 		texture.texture = door_opened_img
 		cost.text = connected_room.letter_id
 		
