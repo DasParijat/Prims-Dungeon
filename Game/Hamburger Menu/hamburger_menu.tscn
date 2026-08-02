@@ -30,6 +30,7 @@ layout_mode = 2
 
 [node name="MenuOpenButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=674915948]
 layout_mode = 2
+tooltip_text = "Toggle menu"
 theme = ExtResource("2_04br8")
 toggle_mode = true
 icon = ExtResource("4_kdlrd")
@@ -63,6 +64,7 @@ layout_mode = 2
 
 [node name="Prev Button" type="Button" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer/PrevCountainer" unique_id=1597830879]
 layout_mode = 2
+tooltip_text = "Go back to previous room"
 theme = ExtResource("2_04br8")
 icon = ExtResource("4_m2rih")
 alignment = 0
@@ -74,6 +76,7 @@ layout_mode = 2
 
 [node name="Reset Button" type="Button" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer/ResetContainer" unique_id=82208828]
 layout_mode = 2
+tooltip_text = "Reset back to the beginning"
 theme = ExtResource("2_04br8")
 icon = ExtResource("2_331ra")
 alignment = 0
@@ -84,6 +87,7 @@ layout_mode = 2
 
 [node name="Quit Button" type="Button" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer/QuitContainer" unique_id=796483432]
 layout_mode = 2
+tooltip_text = "Leave to the home menu"
 theme = ExtResource("2_04br8")
 icon = ExtResource("3_bkp30")
 icon_alignment = 1

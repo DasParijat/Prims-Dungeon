@@ -1,14 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bf8rl0c8yy31o"]
+[gd_scene format=3 uid="uid://bf8rl0c8yy31o"]
 
 [ext_resource type="Texture2D" uid="uid://c2g24fa0tauir" path="res://Assets/Images/Door/EdgeDoorClosed.png" id="1_siode"]
-[ext_resource type="Script" path="res://Door/door_scene.gd" id="1_sjux2"]
+[ext_resource type="Script" uid="uid://bes4lg5iggkju" path="res://Door/door_scene.gd" id="1_sjux2"]
 [ext_resource type="FontFile" uid="uid://dsgpaw3wbslsg" path="res://Assets/Fonts/bodoni-mt-regular.ttf" id="3_5qgcp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6ad5j"]
 font = ExtResource("3_5qgcp")
 font_size = 100
 
-[node name="Door" type="Button"]
+[node name="Door" type="Button" unique_id=723630369]
 self_modulate = Color(0, 0, 0, 0)
 anchors_preset = 8
 anchor_left = 0.5
@@ -24,7 +24,7 @@ grow_vertical = 2
 text = "efef"
 script = ExtResource("1_sjux2")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1531573728]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -39,7 +39,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_siode")
 
-[node name="Cost" type="Label" parent="."]
+[node name="Cost" type="Label" parent="." unique_id=226278526]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
