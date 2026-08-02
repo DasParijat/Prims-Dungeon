@@ -93,6 +93,7 @@ text = "30 Points"
 label_settings = SubResource("LabelSettings_nm3xk")
 
 [node name="Minimap" parent="." unique_id=108660044 instance=ExtResource("6_oomkl")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.016

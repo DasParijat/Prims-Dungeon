@@ -7,18 +7,25 @@ const BORDER_COLOR := Color(0.698, 0.0, 0.0, 0.0)
 const LOCKED_EDGE_COLOR := Color(0.36, 0.4, 0.45, 0.8)
 const OPEN_EDGE_COLOR := Color(0.7, 0.0, 0.0, 0.95)
 const ROOM_COLOR := Color(0.18, 0.24, 0.3, 1.0)
-const EXPLORED_ROOM_COLOR := Color(0.723, 0.788, 0.726, 1.0)
+const EXPLORED_ROOM_COLOR := Color(0.384, 0.433, 0.388, 1.0)
 const CURRENT_ROOM_COLOR := Color(1.0, 0.452, 0.462, 0.95)
+const PRIOR_ROOM_COLOR := Color(0.778, 0.459, 0.447, 0.95)
 
 var map_rooms : Array[Room] = []
 var map_doors : Array[Door] = []
 var current_room : Room
 
 func set_graph(rooms : Array[Room], doors : Array[Door]) -> void:
-	# Game removes START from its working arrays after the first transition.
-	# A shallow array copy retains the room/door objects but keeps this topology intact.
-	map_rooms = rooms.duplicate()
-	map_doors = doors.duplicate()
+	# The START room is a staging area, not a dungeon room, so it is not shown.
+	# The remaining shallow copies retain room/door state even after Game removes START.
+	map_rooms.clear()
+	map_doors.clear()
+	for room in rooms:
+		if room.letter_id != "START":
+			map_rooms.append(room)
+	for door in doors:
+		if door.room1.letter_id != "START" and door.room2.letter_id != "START":
+			map_doors.append(door)
 	queue_redraw()
 
 func set_current_room(room : Room) -> void:
