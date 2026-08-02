@@ -16,7 +16,7 @@ func _ready() -> void:
 	
 func update_text(new_value) -> void:
 	## Update value text and num_of_rooms based on new_value
-	slider_value_label.text = str(new_value)
+	slider_value_label.text = str(int(new_value))
 	GRH.num_of_rooms = int(new_value)
 	
 func _on_h_slider_value_changed(value : float) -> void:
