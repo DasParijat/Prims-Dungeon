@@ -12,7 +12,7 @@ const WIN_BACKGROUND : Texture2D = preload("uid://57t1euthr6ct")
 @onready var points_label : Label = $UIContainer/PointsLabel
 @onready var orb : TextureButton = $Room/Orb
 @onready var minimap : DungeonMinimap = $Minimap
-@onready var hamburger_menu : Control = $hamburger_menu
+@onready var hamburger_menu : HamburgerMenu = $hamburger_menu
 
 @export_category("Number of Rooms")
 @export var MIN_ROOMS : int
@@ -168,3 +168,8 @@ func _on_game_leave() -> void:
 
 func _on_minimap_toggled(is_visible : bool) -> void:
 	minimap.visible = is_visible
+
+func _unhandled_input(event : InputEvent) -> void:
+	if event.is_action_pressed("toggle_map"):
+		hamburger_menu.toggle_minimap()
+		get_viewport().set_input_as_handled()
