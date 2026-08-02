@@ -1,5 +1,7 @@
 extends Control
 
+signal minimap_toggled(is_visible : bool)
+
 # Menu Related Nodes
 @onready var menu : Control = $MarginContainer/VBoxContainer/Menu
 @onready var menu_open_button : Button = $MarginContainer/VBoxContainer/MarginContainer/MenuOpenButton
@@ -54,3 +56,6 @@ func _on_quit_button() -> void:
 func _on_game_won() -> void:
 	prev_countainer.hide()
 	game_has_won = true
+
+func _on_minimap_toggle_toggled(button_pressed : bool) -> void:
+	minimap_toggled.emit(button_pressed)

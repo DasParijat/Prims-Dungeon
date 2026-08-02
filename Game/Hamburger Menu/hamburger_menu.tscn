@@ -70,6 +70,12 @@ icon_alignment = 1
 [node name="QuitContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer" unique_id=1825710198]
 layout_mode = 2
 
+[node name="MinimapToggle" type="CheckButton" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_04br8")
+text = "Minimap"
+button_pressed = true
+
 [node name="Quit Button" type="Button" parent="MarginContainer/VBoxContainer/Menu/VBoxContainer/QuitContainer" unique_id=796483432]
 layout_mode = 2
 theme = ExtResource("2_04br8")
@@ -80,3 +86,4 @@ icon_alignment = 1
 [connection signal="button_up" from="MarginContainer/VBoxContainer/Menu/VBoxContainer/PrevCountainer/Prev Button" to="." method="_on_prev_button"]
 [connection signal="button_up" from="MarginContainer/VBoxContainer/Menu/VBoxContainer/ResetContainer/Reset Button" to="." method="_on_reset_button"]
 [connection signal="button_up" from="MarginContainer/VBoxContainer/Menu/VBoxContainer/QuitContainer/Quit Button" to="." method="_on_quit_button"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Menu/VBoxContainer/MinimapToggle" to="." method="_on_minimap_toggle_toggled"]

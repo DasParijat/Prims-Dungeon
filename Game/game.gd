@@ -11,6 +11,8 @@ const WIN_BACKGROUND : Texture2D = preload("uid://57t1euthr6ct")
 @onready var background: TextureRect = $Room/Background
 @onready var points_label : Label = $UIContainer/PointsLabel
 @onready var orb : TextureButton = $Room/Orb
+@onready var minimap : DungeonMinimap = $Minimap
+@onready var hamburger_menu : Control = $hamburger_menu
 
 @export_category("Number of Rooms")
 @export var MIN_ROOMS : int
@@ -31,6 +33,7 @@ func _ready() -> void:
 	GRH.connect("game_won", Callable(self, "_on_game_won"))
 	GRH.connect("game_leave", Callable(self, "_on_game_leave"))
 	GRH.connect("go_prev_room", Callable(self, "_on_go_prev_room"))
+	hamburger_menu.connect("minimap_toggled", Callable(self, "_on_minimap_toggled"))
 	
 	GRH.prev_rooms.clear()
 	create_dungeon()
@@ -42,6 +45,7 @@ func create_dungeon() -> void:
 	cur_dungeon = Dungeon.new(GRH.num_of_rooms)
 	rooms_array = cur_dungeon.rooms_array
 	doors_array = cur_dungeon.doors_array
+	minimap.set_graph(rooms_array, doors_array)
 
 func start_game(start_room : Room) -> void:
 	for door in doors_array:
@@ -76,6 +80,7 @@ func load_room(room : Room) -> void:
 	## Loads in indiviual rooms
 	update_label_text()
 	color_modulate.color = room.mod_color
+	minimap.set_current_room(room)
 	
 	# Clear existing doors
 	for child in door_container.get_children():
@@ -149,6 +154,7 @@ func _on_orb_pressed() -> void:
 	cur_room.orb_found = true
 	GRH.orbs_found += 1
 	update_label_text()
+	minimap.refresh()
 	if GRH.orbs_found == rooms_array.size():
 		GRH.emit_signal("game_won")
 		
@@ -156,3 +162,6 @@ func _on_orb_pressed() -> void:
 
 func _on_game_leave() -> void:
 	GScene.change_scene(GScene.HOME_MENU)
+
+func _on_minimap_toggled(is_visible : bool) -> void:
+	minimap.visible = is_visible
