@@ -11,6 +11,8 @@ const WIN_BACKGROUND : Texture2D = preload("uid://57t1euthr6ct")
 @onready var background: TextureRect = $Room/Background
 @onready var points_label : Label = $UIContainer/PointsLabel
 @onready var orb : TextureButton = $Room/Orb
+@onready var minimap : DungeonMinimap = $Minimap
+@onready var hamburger_menu : HamburgerMenu = $hamburger_menu
 
 @export_category("Number of Rooms")
 @export var MIN_ROOMS : int
@@ -31,6 +33,7 @@ func _ready() -> void:
 	GRH.connect("game_won", Callable(self, "_on_game_won"))
 	GRH.connect("game_leave", Callable(self, "_on_game_leave"))
 	GRH.connect("go_prev_room", Callable(self, "_on_go_prev_room"))
+	hamburger_menu.connect("minimap_toggled", Callable(self, "_on_minimap_toggled"))
 	
 	GRH.prev_rooms.clear()
 	create_dungeon()
@@ -42,6 +45,7 @@ func create_dungeon() -> void:
 	cur_dungeon = Dungeon.new(GRH.num_of_rooms)
 	rooms_array = cur_dungeon.rooms_array
 	doors_array = cur_dungeon.doors_array
+	minimap.set_graph(rooms_array, doors_array)
 
 func start_game(start_room : Room) -> void:
 	for door in doors_array:
@@ -72,10 +76,11 @@ func _on_game_reset() -> void:
 	else:
 		printerr("Game: IN START ROOM, CAN'T RESET")
 	
-func load_room(room : Room) -> void:
+func load_room(room : Room, prior_room : Room = null) -> void:
 	## Loads in indiviual rooms
 	update_label_text()
 	color_modulate.color = room.mod_color
+	minimap.set_current_room(room, prior_room)
 	
 	# Clear existing doors
 	for child in door_container.get_children():
@@ -117,18 +122,20 @@ func _on_door_entered(door : Door) -> void:
 			GRH.prev_rooms.pop_front()
 	#print("Previous Room: ", GRH.prev_rooms)
 	
-	# Load next room
+	# Load next room and retain the room just left for the minimap.
+	var prior_room := cur_room
 	cur_room = next_room
-	load_room(next_room)
+	load_room(next_room, prior_room)
 
 func _on_go_prev_room() -> void:
 	if GRH.prev_rooms.size() < 1:
 		return
 	
 	var previous_room = GRH.prev_rooms.pop_back()
+	var prior_room := cur_room
 	cur_room = previous_room
 	
-	load_room(previous_room)
+	load_room(previous_room, prior_room)
 	
 func update_label_text() -> void:
 	## Update UI text on top left
@@ -138,9 +145,10 @@ func update_label_text() -> void:
 
 func _on_game_won() -> void:
 	## Create and go to WIN room
+	var prior_room := cur_room
 	cur_room = Room.new("WIN", Color(0.8, 0.8, 0.8))
 	background.texture = WIN_BACKGROUND
-	load_room(cur_room)
+	load_room(cur_room, prior_room)
 
 func _on_orb_pressed() -> void:
 	## Update orb related information
@@ -149,6 +157,7 @@ func _on_orb_pressed() -> void:
 	cur_room.orb_found = true
 	GRH.orbs_found += 1
 	update_label_text()
+	minimap.refresh()
 	if GRH.orbs_found == rooms_array.size():
 		GRH.emit_signal("game_won")
 		
@@ -156,3 +165,11 @@ func _on_orb_pressed() -> void:
 
 func _on_game_leave() -> void:
 	GScene.change_scene(GScene.HOME_MENU)
+
+func _on_minimap_toggled(is_visible : bool) -> void:
+	minimap.visible = is_visible
+
+func _unhandled_input(event : InputEvent) -> void:
+	if event.is_action_pressed("toggle_map"):
+		hamburger_menu.toggle_minimap()
+		get_viewport().set_input_as_handled()

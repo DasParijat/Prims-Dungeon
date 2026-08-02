@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cpy0flbvigrsd" path="res://Game/Hamburger Menu/hamburger_menu.tscn" id="2_ilt8h"]
 [ext_resource type="Texture2D" uid="uid://dnkhwospra37q" path="res://Assets/Images/orb.png" id="3_dfmax"]
 [ext_resource type="FontFile" uid="uid://dsgpaw3wbslsg" path="res://Assets/Fonts/bodoni-mt-regular.ttf" id="5_j5f5y"]
+[ext_resource type="PackedScene" uid="uid://h0desipovgyu" path="res://Game/Minimap/minimap.tscn" id="6_oomkl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nm3xk"]
 font = ExtResource("5_j5f5y")
@@ -90,6 +91,19 @@ offset_bottom = 42.0
 layout_mode = 2
 text = "30 Points"
 label_settings = SubResource("LabelSettings_nm3xk")
+
+[node name="Minimap" parent="." unique_id=108660044 instance=ExtResource("6_oomkl")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.016
+anchor_top = 0.694
+anchor_right = -0.016
+anchor_bottom = 0.694
+offset_left = 15.360001
+offset_top = 39.320007
+offset_right = 228.36
+offset_bottom = 220.32
 
 [node name="hamburger_menu" parent="." unique_id=1024854712 instance=ExtResource("2_ilt8h")]
 layout_mode = 0

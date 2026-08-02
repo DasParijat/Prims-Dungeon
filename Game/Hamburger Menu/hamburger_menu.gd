@@ -1,8 +1,12 @@
 extends Control
+class_name HamburgerMenu
+
+signal minimap_toggled(is_visible : bool)
 
 # Menu Related Nodes
 @onready var menu : Control = $MarginContainer/VBoxContainer/Menu
 @onready var menu_open_button : Button = $MarginContainer/VBoxContainer/MarginContainer/MenuOpenButton
+@onready var minimap_toggle : Button = $MarginContainer/VBoxContainer/Menu/VBoxContainer/MinimapContainer/MinimapToggle
 
 # Button Containers
 @onready var prev_countainer : Container = $MarginContainer/VBoxContainer/Menu/VBoxContainer/PrevCountainer
@@ -54,3 +58,10 @@ func _on_quit_button() -> void:
 func _on_game_won() -> void:
 	prev_countainer.hide()
 	game_has_won = true
+
+func _on_minimap_toggle_toggled(button_pressed : bool) -> void:
+	minimap_toggled.emit(button_pressed)
+
+func toggle_minimap() -> void:
+	minimap_toggle.set_pressed_no_signal(not minimap_toggle.button_pressed)
+	minimap_toggled.emit(minimap_toggle.button_pressed)
