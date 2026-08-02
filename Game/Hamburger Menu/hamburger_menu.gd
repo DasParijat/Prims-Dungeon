@@ -6,7 +6,7 @@ signal minimap_toggled(is_visible : bool)
 # Menu Related Nodes
 @onready var menu : Control = $MarginContainer/VBoxContainer/Menu
 @onready var menu_open_button : Button = $MarginContainer/VBoxContainer/MarginContainer/MenuOpenButton
-@onready var minimap_toggle : CheckButton = $MarginContainer/VBoxContainer/Menu/VBoxContainer/MinimapToggle
+@onready var minimap_toggle : Button = $MarginContainer/VBoxContainer/Menu/VBoxContainer/MinimapContainer/MinimapToggle
 
 # Button Containers
 @onready var prev_countainer : Container = $MarginContainer/VBoxContainer/Menu/VBoxContainer/PrevCountainer

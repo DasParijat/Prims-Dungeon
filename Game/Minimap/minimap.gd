@@ -9,7 +9,7 @@ const OPEN_EDGE_COLOR := Color(0.7, 0.0, 0.0, 0.95)
 const ROOM_COLOR := Color(0.18, 0.24, 0.3, 1.0)
 const EXPLORED_ROOM_COLOR := Color(0.384, 0.433, 0.388, 1.0)
 const CURRENT_ROOM_COLOR := Color(1.0, 0.452, 0.462, 0.95)
-const PRIOR_ROOM_COLOR := Color(0.778, 0.459, 0.447, 0.95)
+const PRIOR_ROOM_COLOR := Color(0.51, 0.26, 0.253, 0.95)
 
 var map_rooms : Array[Room] = []
 var map_doors : Array[Door] = []
