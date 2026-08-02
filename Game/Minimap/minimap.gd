@@ -2,13 +2,13 @@ extends Control
 class_name DungeonMinimap
 
 ## Draws the generated dungeon as a compact, always-current graph.
-const PANEL_COLOR := Color(0.035, 0.055, 0.075, 0.88)
-const BORDER_COLOR := Color(0.72, 0.63, 0.38, 0.8)
+const PANEL_COLOR := Color(0.035, 0.055, 0.075, 0.0)
+const BORDER_COLOR := Color(0.698, 0.0, 0.0, 0.0)
 const LOCKED_EDGE_COLOR := Color(0.36, 0.4, 0.45, 0.8)
-const OPEN_EDGE_COLOR := Color(0.92, 0.72, 0.25, 0.95)
+const OPEN_EDGE_COLOR := Color(0.7, 0.0, 0.0, 0.95)
 const ROOM_COLOR := Color(0.18, 0.24, 0.3, 1.0)
-const EXPLORED_ROOM_COLOR := Color(0.26, 0.58, 0.46, 1.0)
-const CURRENT_ROOM_COLOR := Color(0.35, 0.82, 0.95, 1.0)
+const EXPLORED_ROOM_COLOR := Color(0.723, 0.788, 0.726, 1.0)
+const CURRENT_ROOM_COLOR := Color(1.0, 0.452, 0.462, 0.95)
 
 var map_rooms : Array[Room] = []
 var map_doors : Array[Door] = []
@@ -55,7 +55,11 @@ func _draw() -> void:
 
 		var label := "S" if room.letter_id == "START" else room.letter_id
 		var text_size := font.get_string_size(label, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size)
-		draw_string(font, node_position - text_size * 0.5 + Vector2(0, font_size * 0.74), label,
+		var text_baseline := node_position + Vector2(
+			-text_size.x * 0.5,
+			(font.get_ascent(font_size) - font.get_descent(font_size)) * 0.5
+		)
+		draw_string(font, text_baseline, label,
 				HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, Color.WHITE)
 
 func _get_room_positions() -> Dictionary:
