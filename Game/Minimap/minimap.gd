@@ -14,6 +14,7 @@ const PRIOR_ROOM_COLOR := Color(0.778, 0.459, 0.447, 0.95)
 var map_rooms : Array[Room] = []
 var map_doors : Array[Door] = []
 var current_room : Room
+var prior_room : Room
 
 func set_graph(rooms : Array[Room], doors : Array[Door]) -> void:
 	# The START room is a staging area, not a dungeon room, so it is not shown.
@@ -28,8 +29,9 @@ func set_graph(rooms : Array[Room], doors : Array[Door]) -> void:
 			map_doors.append(door)
 	queue_redraw()
 
-func set_current_room(room : Room) -> void:
+func set_current_room(room : Room, previous_room : Room = null) -> void:
 	current_room = room
+	prior_room = previous_room
 	queue_redraw()
 
 func refresh() -> void:
@@ -55,6 +57,8 @@ func _draw() -> void:
 		var fill_color := ROOM_COLOR
 		if room.orb_found:
 			fill_color = EXPLORED_ROOM_COLOR
+		if room == prior_room:
+			fill_color = PRIOR_ROOM_COLOR
 		if room == current_room:
 			fill_color = CURRENT_ROOM_COLOR
 		draw_circle(node_position, node_radius, fill_color)
